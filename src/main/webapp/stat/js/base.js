@@ -3190,7 +3190,7 @@ $._templates = {
 }
 
 $.message = function (config) {
-    config.closeText = config.closeText || 'å…³é—­';
+    config.closeText = config.closeText || '¹Ø±Õ';
     var html = $.render($._templates['message'], config);
     var node = $(html).appendTo('body').modal(config).on('hidden.bs.modal', function () {
         $(this).remove();
@@ -3215,8 +3215,8 @@ $.message = function (config) {
 }
 
 $.confirm = function (config) {
-    config.confirmText = config.confirmText || 'ç¡®å®š';
-    config.cancelText = config.cancelText || 'å–æ¶ˆ';
+    config.confirmText = config.confirmText || 'È·¶¨';
+    config.cancelText = config.cancelText || 'È¡Ïû';
     var html = $.render($._templates['confirm'], config);
     var node = $(html).appendTo('body').modal(config).on('hidden.bs.modal', function () {
         $(this).remove();
@@ -3274,12 +3274,12 @@ $(function () {
 
             $.post($.route('org.project.search'), {key: val}, function (data) {
                 if (!jqThis.data('searching')) {
-                    // å¯èƒ½è¿”å›é€”ä¸­ï¼Œå°±å·²ç»ä¸éœ€è¦è¿™ä¸ªæ•°æ®äº†ï¼Œæ¯”å¦‚ï¼šæ¸…ç©ºäº†input
+                    // ¿ÉÄÜ·µ»ØÍ¾ÖĞ£¬¾ÍÒÑ¾­²»ĞèÒªÕâ¸öÊı¾İÁË£¬±ÈÈç£ºÇå¿ÕÁËinput
                     return;
                 }
                 jqThis.data('searching', 0);
                 if (data && data.length === 0) {
-                    data = [{id: '-1', name: 'æ²¡æœ‰æ‰¾åˆ° "' + val + '" å¯¹åº”çš„é¡¹ç›®ï¼Œo(â•¯â–¡â•°)o'}];
+                    data = [{id: '-1', name: 'Ã»ÓĞÕÒµ½ "' + val + '" ¶ÔÓ¦µÄÏîÄ¿£¬o(¨s¡õ¨t)o'}];
                 }
                 ul.html($.render($._templates['projects'], {
                     projects: data
@@ -3391,7 +3391,7 @@ $(function () {
         var a = $('#register-password');
         var b = $('#register-password-confirm');
         if (a.val() != b.val()) {
-            var node = $($.render($._templates['loginError'], {msg: 'å¯†ç ä¸ç¡®è®¤å¯†ç ä¸ä¸€è‡´'}));
+            var node = $($.render($._templates['loginError'], {msg: 'ÃÜÂëÓëÈ·ÈÏÃÜÂë²»Ò»ÖÂ'}));
             node.hide();
             b.parents('form').prepend(node);
             node.slideDown();
@@ -3413,9 +3413,9 @@ $(function () {
     }
     var html = '<div class="helper-tip">\
 		<div class="dialog-item say-hi">\
-			<span class="name">RAPå°åŠ©æ‰‹</span>\
+			<span class="name">RAPĞ¡ÖúÊÖ</span>\
 			<div class="content">\
-				<div>å“’å“’å•¦~ æˆ‘æ˜¯RAPå°åŠ©æ‰‹ï¼Œæ¬¢è¿æ‚¨ä½¿ç”¨RAP~~~</div>\
+				<div>ßÕßÕÀ²~ ÎÒÊÇRAPĞ¡ÖúÊÖ£¬»¶Ó­ÄúÊ¹ÓÃRAP~~~</div>\
 			</div>\
 		</div>\
 		<div class="mask" style="width: 100px; height: 100px;">\
@@ -3423,11 +3423,11 @@ $(function () {
 		<img src="/stat/img/yellow.png" width="100""/>\
 	</div>';
 
-    var helpText = '<div>- ä¸ä¼šç”¨RAPï¼ŸRAP 5åˆ†é’Ÿä»‹ç»è§†é¢‘åœ¨ <a href="http://cloud.video.taobao.com//play/u/11051796/p/1/e/1/t/1/11622279.swf" target="_blank">è¿™é‡Œ</a></div>\
-		<div>- ä¸ä¼šå†™Mockjsï¼Ÿæˆ‘ä»¬ä¸ºæ‚¨å‡†å¤‡äº† <a href="http://mockjs.com" target="_blank">æ–‡æ¡£</a> å’Œ <a href="/workspace/myWorkspace.action?projectId=79&mock=true&actionId=828" target="_blank">ç¤ºä¾‹</a></div>\
-		<div>- é‡åˆ°RAPçš„bugäº†ï¼Ÿæ¬¢è¿åˆ° <a href="https://github.com/thx/RAP/issues/new" target="_blank">è¿™é‡Œ</a> æäº¤issue</div>\
-		<div>- æƒ³çœ‹çœ‹RAPå®˜ç½‘æ–‡æ¡£ï¼Ÿè¯·ç‚¹å‡» <a href="http://thx.github.io/RAP" target="_blank">è¿™é‡Œ</a></div>\
-		<div>- å…¶ä»–é—®é¢˜ï¼Œè¯·ç›´æ¥æ·»åŠ é˜¿é‡Œæ—ºæ—ºç¾¤ 582755829 </div>';
+    var helpText = '<div>- ²»»áÓÃRAP£¿RAP 5·ÖÖÓ½éÉÜÊÓÆµÔÚ <a href="http://cloud.video.taobao.com//play/u/11051796/p/1/e/1/t/1/11622279.swf" target="_blank">ÕâÀï</a></div>\
+		<div>- ²»»áĞ´Mockjs£¿ÎÒÃÇÎªÄú×¼±¸ÁË <a href="http://mockjs.com" target="_blank">ÎÄµµ</a> ºÍ <a href="/workspace/myWorkspace.action?projectId=79&mock=true&actionId=828" target="_blank">Ê¾Àı</a></div>\
+		<div>- Óöµ½RAPµÄbugÁË£¿»¶Ó­µ½ <a href="https://github.com/thx/RAP/issues/new" target="_blank">ÕâÀï</a> Ìá½»issue</div>\
+		<div>- Ïë¿´¿´RAP¹ÙÍøÎÄµµ£¿Çëµã»÷ <a href="http://thx.github.io/RAP" target="_blank">ÕâÀï</a></div>\
+		<div>- ÆäËûÎÊÌâ£¬ÇëÖ±½ÓÌí¼Ó°¢ÀïÍúÍúÈº 582755829 </div>';
 
     $(html).appendTo('body');
     if (window.localStorage.getItem('rap-anim-showed')) {
@@ -3438,22 +3438,22 @@ $(function () {
     }
     function before() {
         var tip = $('.helper-tip');
-        // helperå‡ºç°
+        // helper³öÏÖ
         tip.delay(1000).show(2000, function () {
             var hi = $('.say-hi');
-            // æ–‡å­—å‡ºç°
+            // ÎÄ×Ö³öÏÖ
             hi.fadeIn(1000);
             setTimeout(function () {
-                // ä¿®æ”¹æ–‡æ¡ˆ
+                // ĞŞ¸ÄÎÄ°¸
                 var content = hi.find('.content');
-                content.html('<div>æˆ‘æ‡‚äº‹ï¼Œæˆ‘ä¸æ‰“æ‰°æ‚¨ï¼Œé‡åˆ°é—®é¢˜æ—¶ï¼Œç‚¹æˆ‘æœ‰æƒŠå–œ~</div>');
+                content.html('<div>ÎÒ¶®ÊÂ£¬ÎÒ²»´òÈÅÄú£¬Óöµ½ÎÊÌâÊ±£¬µãÎÒÓĞ¾ªÏ²~</div>');
                 setTimeout(function () {
-                    // æ–‡å­—é€€å‡º
+                    // ÎÄ×ÖÍË³ö
                     hi.fadeOut(1000, function () {
-                        // ä¿®æ”¹æ–‡æ¡ˆ
+                        // ĞŞ¸ÄÎÄ°¸
                         content.html(helpText);
                         hi.css('width', '370px');
-                        // helperéšè—
+                        // helperÒş²Ø
                         tip.addClass('anim').addClass('part').hover(function () {
                             hi.stop().clearQueue().fadeIn(500);
                         }, function () {
@@ -3470,10 +3470,10 @@ $(function () {
         tip.show();
         var hi = $('.say-hi');
         var content = hi.find('.content');
-        // ä¿®æ”¹æ–‡æ¡ˆ
+        // ĞŞ¸ÄÎÄ°¸
         content.html(helpText);
         hi.css('width', '370px');
-        // helperéšè—
+        // helperÒş²Ø
         tip.addClass('anim').addClass('part').hover(function () {
             hi.stop().clearQueue().fadeIn(500);
         }, function () {

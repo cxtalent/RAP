@@ -47,7 +47,7 @@
         }
     };
 
-    // ä¸€ä¸ªç®€å•çš„è·¯ç”±å¯¹åº”
+    // Ò»¸ö¼òµ¥µÄÂ·ÓÉ¶ÔÓ¦
     // org.group.all
     // org.productline.update
     $.route = function (path) {
@@ -184,13 +184,13 @@ $(function () {
         return;
     }
 
-    var btns = '<input type="button" class="btn btn-primary set-btn" value="è®¾ç½®"/>\
-		<input type="button" class="btn btn-warning clear-btn" value="æ¸…ç©º"/>\
-		<input type="button" class="btn btn-default close-btn" value="å…³é—­"/>';
+    var btns = '<input type="button" class="btn btn-primary set-btn" value="ÉèÖÃ"/>\
+		<input type="button" class="btn btn-warning clear-btn" value="Çå¿Õ"/>\
+		<input type="button" class="btn btn-default close-btn" value="¹Ø±Õ"/>';
     var tmpl = '<ul class="list-unstyled">\
 			{{#changelogs}}<li>{{{desc}}}<button class="close hide" data-id="{{id}}">&times;</button></li>{{/changelogs}}\
 		</ul>';
-    var noMsgs = '<div class="no-msgs">æ²¡æœ‰æ¶ˆæ¯æé†’</div>';
+    var noMsgs = '<div class="no-msgs">Ã»ÓĞÏûÏ¢ÌáĞÑ</div>';
 
     var label = $('.messages-trigger .label');
 
@@ -200,11 +200,11 @@ $(function () {
             type: 'project',
             operate: 'modify',
             id: '123',
-            field: 'åç§°',
-            from: 'é¡¹ç›®A',
-            to: 'é¡¹ç›®B',
+            field: 'Ãû³Æ',
+            from: 'ÏîÄ¿A',
+            to: 'ÏîÄ¿B',
             operatorId: 21,
-            operator: 'æ€ç«¹',
+            operator: 'Ë¼Öñ',
             date: '2014-3-21',
             detail: 11
         }, {
@@ -213,10 +213,10 @@ $(function () {
             operate: 'delete',
             id: '123',
             field: '',
-            from: 'æµ‹è¯•é¡¹ç›®',
+            from: '²âÊÔÏîÄ¿',
             to: '',
             operatorId: 21,
-            operator: 'æ€ç«¹',
+            operator: 'Ë¼Öñ',
             date: '2014-3-21',
             detail: 11
         }, {
@@ -224,11 +224,11 @@ $(function () {
             type: 'action',
             operate: 'modify',
             id: '1223',
-            field: 'åç§°',
-            from: 'è¯·æ±‚A',
-            to: 'è¯·æ±‚A+',
+            field: 'Ãû³Æ',
+            from: 'ÇëÇóA',
+            to: 'ÇëÇóA+',
             operatorId: 21,
-            operator: 'æ€ç«¹',
+            operator: 'Ë¼Öñ',
             date: '2014-3-21',
             detail: 22
         }, {
@@ -237,10 +237,10 @@ $(function () {
             operate: 'delete',
             id: '1223',
             field: '',
-            from: 'è¯·æ±‚A',
+            from: 'ÇëÇóA',
             to: '',
             operatorId: 21,
-            operator: 'æ€ç«¹',
+            operator: 'Ë¼Öñ',
             date: '2014-3-21',
             detail: 33
         }]
@@ -259,40 +259,40 @@ $(function () {
     }
 
     function create() {
-        return '<span class="label label-success">å¢</span> ';
+        return '<span class="label label-success">Ôö</span> ';
     }
 
     function del() {
-        return '<span class="label label-danger">åˆ </span> ';
+        return '<span class="label label-danger">É¾</span> ';
     }
 
     function update() {
-        return '<span class="label label-info">æ”¹</span> ';
+        return '<span class="label label-info">¸Ä</span> ';
     }
 
     function wrap(name) {
         return '"' + name + '"';
     }
 
-    var notifyTmpl = '<span class="label label-{{style}}">{{text}}</span> {{targetUser.name}} {{operate}}äº†é¡¹ç›® <a href="/workspace/myWorkspace.action?projectId={{param1}}" target="_blank">{{param2}}</a> <span class="pull-right" style="color: #AAA;">({{createTimeStr}})</span>';
+    var notifyTmpl = '<span class="label label-{{style}}">{{text}}</span> {{targetUser.name}} {{operate}}ÁËÏîÄ¿ <a href="/workspace/myWorkspace.action?projectId={{param1}}" target="_blank">{{param2}}</a> <span class="pull-right" style="color: #AAA;">({{createTimeStr}})</span>';
 
     function renderNotification(obj) {
         if (obj.typeId == 1) {
             obj.style = 'info';
-            obj.text = 'æ”¹';
-            obj.operate = 'ä¿®æ”¹'
+            obj.text = '¸Ä';
+            obj.operate = 'ĞŞ¸Ä'
         } else if (obj.typeId == 2) {
             obj.style = 'success';
-            obj.text = 'å¢';
-            obj.operate = 'æŠŠä½ åŠ å…¥'
+            obj.text = 'Ôö';
+            obj.operate = '°ÑÄã¼ÓÈë'
         }
         return $.render(notifyTmpl, obj);
     }
 
     function generateHTML(data) {
 //		var chMapper = {
-//			project: 'é¡¹ç›®',
-//			action: 'æ¥å£'
+//			project: 'ÏîÄ¿',
+//			action: '½Ó¿Ú'
 //		}
         var translated = [];
         data.forEach(function (log) {
@@ -302,13 +302,13 @@ $(function () {
             });
 //			console.log(log);
 //			var type = log.type, operate = log.operate;
-//			var cnName = chMapper[type] || 'å®ä½“';
+//			var cnName = chMapper[type] || 'ÊµÌå';
 //			if (operate == 'create') {
-//				log.desc = create() + href(log.operator, log.operatorId) + ' åˆ›å»ºäº†' + cnName + ' ' + wrap(log.to) + '';
+//				log.desc = create() + href(log.operator, log.operatorId) + ' ´´½¨ÁË' + cnName + ' ' + wrap(log.to) + '';
 //			} else if (operate == 'delete') {
-//				log.desc = del() + href(log.operator, log.operatorId) + ' åˆ é™¤äº†' + cnName + ' ' + wrap(log.from) + '';
+//				log.desc = del() + href(log.operator, log.operatorId) + ' É¾³ıÁË' + cnName + ' ' + wrap(log.from) + '';
 //			} else if (operate == 'modify') {
-//				log.desc = update() + href(log.operator, log.operatorId) + ' å°†' + cnName + ' ' + wrap(log.from) + ' çš„åç§°ä¿®æ”¹ä¸º ' + wrap(log.to) + '';
+//				log.desc = update() + href(log.operator, log.operatorId) + ' ½«' + cnName + ' ' + wrap(log.from) + ' µÄÃû³ÆĞŞ¸ÄÎª ' + wrap(log.to) + '';
 //			}
         });
         con.find('.msgs').html($.render(tmpl, {
@@ -356,9 +356,9 @@ $(function () {
                 return;
             }
             $.confirm({
-                content: 'ç¡®å®šè¦æ¸…ç©ºæ‰€æœ‰çš„æé†’æ¶ˆæ¯ä¹ˆï¼Ÿ',
-                title: 'æ¸…ç©ºæé†’æ¶ˆæ¯',
-                confirmText: 'ç¡®å®š',
+                content: 'È·¶¨ÒªÇå¿ÕËùÓĞµÄÌáĞÑÏûÏ¢Ã´£¿',
+                title: 'Çå¿ÕÌáĞÑÏûÏ¢',
+                confirmText: 'È·¶¨',
                 cancelCallback: function () {
                 },
                 confirmClicked: function () {

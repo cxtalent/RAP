@@ -9,10 +9,10 @@ $(function () {
     }
 
     var NAME_MAP = {
-        'user': 'æˆ‘çš„é¡¹ç›®',
-        'star': 'é‡è¦é¡¹ç›®',
-        'heart': 'æˆ‘å…³æ³¨çš„é¡¹ç›®',
-        'tag': 'æˆ‘åŠ å…¥çš„é¡¹ç›®'
+        'user': 'ÎÒµÄÏîÄ¿',
+        'star': 'ÖØÒªÏîÄ¿',
+        'heart': 'ÎÒ¹Ø×¢µÄÏîÄ¿',
+        'tag': 'ÎÒ¼ÓÈëµÄÏîÄ¿'
     };
 
     var PL_ID = null;
@@ -30,8 +30,8 @@ $(function () {
 
         $.confirm({
             content: $.render($('#create-proj-tmpl').text(), {}),
-            title: 'åˆ›å»ºé¡¹ç›®',
-            confirmText: 'ç¡®è®¤åˆ›å»º',
+            title: '´´½¨ÏîÄ¿',
+            confirmText: 'È·ÈÏ´´½¨',
             cancelCallback: function () {
                 btn.data('shown', 0);
             },
@@ -124,7 +124,7 @@ $(function () {
                     accounts: values.join(', ')
                 }, function (data) {
                     data = data.result;
-                    data.status = data.status || 'åˆšåˆšåˆ›å»º';
+                    data.status = data.status || '¸Õ¸Õ´´½¨';
                     var html = $.render(tmpl, data);
                     $(that).before(html);
                     modal.modal('hide');
@@ -165,8 +165,8 @@ $(function () {
                 desc: desc,
                 users: pickeds
             }),
-            title: 'ä¿®æ”¹é¡¹ç›®',
-            confirmText: 'ç¡®è®¤ä¿®æ”¹',
+            title: 'ĞŞ¸ÄÏîÄ¿',
+            confirmText: 'È·ÈÏĞŞ¸Ä',
             showCallback: function () {
                 var that = this;
                 $(this).find('input[type=text]').focus();
@@ -213,7 +213,7 @@ $(function () {
                         return;
                     }
                     data = data.result;
-                    data.status = data.status || 'åˆšåˆšæ›´æ–°';
+                    data.status = data.status || '¸Õ¸Õ¸üĞÂ';
                     var html = $.render(tmpl, data);
                     box.replaceWith(html);
                     modal.modal('hide');
@@ -228,7 +228,7 @@ $(function () {
         var host = location && location.host ? location.host : '/';
         $.message({
             content: '<input type="text" id="rap-plugin-inputer" disabled="disabled" class="form-control" value="<script src=\'http://' + host + '/rap.plugin.js?projectId=' + id + '\'></script>" />',
-            title: 'å¤åˆ¶RAPæ’ä»¶åœ°å€',
+            title: '¸´ÖÆRAP²å¼şµØÖ·',
             showCallback: function () {
                 var ele = $('#rap-plugin-inputer')[0];
                 ele.focus();
@@ -240,8 +240,8 @@ $(function () {
     function handleCreateProductline() {
         $.confirm({
             content: $.render($('#create-productline').text(), {}),
-            title: 'æ·»åŠ äº§å“çº¿',
-            confirmText: 'ç¡®å®š',
+            title: 'Ìí¼Ó²úÆ·Ïß',
+            confirmText: 'È·¶¨',
             showCallback: function () {
                 $(this).find('input[type=text]').focus();
             },
@@ -263,7 +263,7 @@ $(function () {
                 }, function (data) {
                     var productlines = data.items;
                     if (!productlines) {
-                        alert('åˆ›å»ºå¤±è´¥ï¼Œè¯·ç¨åå†è¯•');
+                        alert('´´½¨Ê§°Ü£¬ÇëÉÔºóÔÙÊÔ');
                         return;
                     }
                     var pl = productlines[0];
@@ -271,7 +271,7 @@ $(function () {
                     resetGroupSelect();
                     var select = appendOptions('.project-target .productline', pl.id, pl.name);
                     setTimeout(function () {
-                        select.find('[value=""]').text('--è¯·é€‰æ‹©--');
+                        select.find('[value=""]').text('--ÇëÑ¡Ôñ--');
                         select.val(pl.id);
                     }, 100);
                     modal.modal('hide');
@@ -287,24 +287,24 @@ $(function () {
     function showCreateGroupBtn(id, name) {
         PL_ID = id;
         $('.create-new-entity-container').hide().html(
-            '<div class="create-group btn btn-default" style="margin-top: 10px;">ä¸º â€œ' + name + 'â€ äº§å“çº¿åˆ›å»ºæ–°åˆ†ç»„</div>').slideDown();
+            '<div class="create-group btn btn-default" style="margin-top: 10px;">Îª ¡°' + name + '¡± ²úÆ·Ïß´´½¨ĞÂ·Ö×é</div>').slideDown();
     }
 
     function showCreateProductlineBtn(id, name) {
         CORP_ID = id;
         $('.create-new-entity-container').hide().html(
-            '<div class="create-productline btn btn-default" style="margin-top: 10px;">ä¸º â€œ' + name + 'â€ åˆ›å»ºæ–°äº§å“çº¿</div>').slideDown();
+            '<div class="create-productline btn btn-default" style="margin-top: 10px;">Îª ¡°' + name + '¡± ´´½¨ĞÂ²úÆ·Ïß</div>').slideDown();
     }
 
     function resetGroupSelect() {
-        $('.project-target .group').html('<option>--è¯·é€‰æ‹©åˆ†ç»„--</option>');
+        $('.project-target .group').html('<option>--ÇëÑ¡Ôñ·Ö×é--</option>');
     }
 
     function handleCreateGroup() {
         $.confirm({
             content: $('#create-group-tmpl').text(),
-            title: 'åˆ›å»ºåˆ†ç»„',
-            confirmText: 'ç¡®è®¤åˆ›å»º',
+            title: '´´½¨·Ö×é',
+            confirmText: 'È·ÈÏ´´½¨',
             showCallback: function () {
                 $(this).find('input[type=text]').focus();
             },
@@ -326,13 +326,13 @@ $(function () {
                 }, function (data) {
                     var groups = data.groups;
                     if (!groups) {
-                        alert('åˆ›å»ºå¤±è´¥ï¼Œè¯·ç¨åå†è¯•');
+                        alert('´´½¨Ê§°Ü£¬ÇëÉÔºóÔÙÊÔ');
                         return;
                     }
                     var group = groups[0];
                     var select = $('.project-target .group').append('<option value="' + group.id + '">' + group.name + '</option>');
                     setTimeout(function () {
-                        select.find('[value=""]').text('--è¯·é€‰æ‹©--');
+                        select.find('[value=""]').text('--ÇëÑ¡Ôñ--');
                         select.val(group.id);
                     }, 100);
                     modal.modal('hide');
@@ -345,9 +345,9 @@ $(function () {
         var id = $(this).data('id');
         var box = $(this).parents('.box');
         $.confirm({
-            content: 'åˆ é™¤ä»¥åä¸å¯æ¢å¤ï¼Œè¯·è°¨æ…æ“ä½œ',
-            title: 'åˆ é™¤é¡¹ç›®',
-            confirmText: 'ç¡®è®¤åˆ é™¤',
+            content: 'É¾³ıÒÔºó²»¿É»Ö¸´£¬Çë½÷É÷²Ù×÷',
+            title: 'É¾³ıÏîÄ¿',
+            confirmText: 'È·ÈÏÉ¾³ı',
             confirmClicked: function () {
                 var modal = $(this);
                 $.post($.route('org.project.delete'), {
@@ -380,16 +380,16 @@ $(function () {
     function fillSelectAsync(route, params, tmpl, target, callback) {
         callback && callback();
         $(target).html($.render(tmpl, {
-            items: [{id: '', name: 'åŠ è½½ä¸­...'}]
+            items: [{id: '', name: '¼ÓÔØÖĞ...'}]
         }));
         $.get($.route(route), params, function (data) {
             if (data.groups) {
                 data.items = data.groups;
             }
             if (data.items.length === 0) {
-                data.items = [{id: '', name: '--æ— æŸ¥è¯¢ç»“æœ--'}];
+                data.items = [{id: '', name: '--ÎŞ²éÑ¯½á¹û--'}];
             } else {
-                data.items.unshift({id: '', name: '--è¯·é€‰æ‹©--'});
+                data.items.unshift({id: '', name: '--ÇëÑ¡Ôñ--'});
             }
 
             var html = $.render(tmpl, data);
@@ -429,12 +429,12 @@ $(function () {
 
             $.post($.route('org.project.search'), {key: val}, function (data) {
                 if (!jqThis.data('searching')) {
-                    // å¯èƒ½è¿”å›é€”ä¸­ï¼Œå°±å·²ç»ä¸éœ€è¦è¿™ä¸ªæ•°æ®äº†ï¼Œæ¯”å¦‚ï¼šæ¸…ç©ºäº†input
+                    // ¿ÉÄÜ·µ»ØÍ¾ÖĞ£¬¾ÍÒÑ¾­²»ĞèÒªÕâ¸öÊı¾İÁË£¬±ÈÈç£ºÇå¿ÕÁËinput
                     return;
                 }
                 jqThis.data('searching', 0);
                 if (data && data.length === 0) {
-                    data = [{id: '-1', name: 'æ²¡æœ‰æ‰¾åˆ° "' + val + '" å¯¹åº”çš„é¡¹ç›®ï¼Œo(â•¯â–¡â•°)o'}];
+                    data = [{id: '-1', name: 'Ã»ÓĞÕÒµ½ "' + val + '" ¶ÔÓ¦µÄÏîÄ¿£¬o(¨s¡õ¨t)o'}];
                 }
                 ul.html($.render($('#project-autocomplete-li').text(), {
                     projects: data
@@ -534,7 +534,7 @@ $(function () {
                 projects: newGroup
             });
             data.groups.forEach(function (group) {
-                group.name = NAME_MAP[group.type] || 'å…¶ä»–';
+                group.name = NAME_MAP[group.type] || 'ÆäËû';
             });
             var html = $.render(tmpl, data);
             $(".groups").html(html);

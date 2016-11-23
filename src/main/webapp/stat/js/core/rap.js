@@ -50,9 +50,9 @@ function deepCopy(o) {
     util.escaper = util.escaper || {};
 
     /**
-     * @desc å˜é‡ç”¨äºHTMLå’ŒJSç¯å¢ƒä¸‹çš„è½¬ä¹‰ã€‚å¦‚ï¼šonclickå±æ€§åŠ å…¥åŠ¨æ€å˜é‡æ—¶
-     * @param {String} inputStr éœ€è¦è½¬ä¹‰çš„å­—ç¬¦ä¸²
-     * @return è½¬ä¹‰åçš„è¾“å‡º
+     * @desc ±äÁ¿ÓÃÓÚHTMLºÍJS»·¾³ÏÂµÄ×ªÒå¡£Èç£ºonclickÊôĞÔ¼ÓÈë¶¯Ì¬±äÁ¿Ê±
+     * @param {String} inputStr ĞèÒª×ªÒåµÄ×Ö·û´®
+     * @return ×ªÒåºóµÄÊä³ö
      */
     util.escaper.escapeInHJ = function(inputStr) {
         inputStr.replace(/\&/g, "&amp;");
@@ -161,19 +161,19 @@ function deepCopy(o) {
 
     util.validator = (function(){
         /**
-         * éªŒè¯è¡¨å•å…ƒç´ çš„æ ¼å¼, å±æ€§validateè¡¨ç¤ºå½“å‰æ•°æ®çš„åç§°ï¼›å±æ€§trim="yes"æ—¶ä¼šè¿‡æ»¤æ•°æ®ä¸¤ç«¯çš„ç©ºç™½å­—ç¬¦ï¼›å±æ€§patternè¡¨ç¤º
-         * éœ€è¦éªŒè¯çš„æ­£åˆ™è¡¨è¾¾å¼ï¼Œä¼šè‡ªåŠ¨åœ¨å½“å‰æ­£åˆ™è¡¨è¾¾å¼å‰åæ·»åŠ ^ä¸$è¡¨ç¤ºè¡Œé¦–è¡Œå°¾è½¬ä¹‰ï¼›å±æ€§maxValue,minValueè¡¨ç¤ºæ•°æ®å…è®¸çš„
-         * æœ€å¤§ã€æœ€å°æ•°å€¼ï¼›å±æ€§maxLen, minLenè¡¨ç¤ºæ•°æ®å…è®¸çš„æœ€å¤§ã€æœ€å°é•¿åº¦ï¼Œæ­¤æ—¶ï¼Œæœ‰ä¸€ä¸ªå±æ€§characterè¡¨ç¤ºé•¿åº¦éªŒè¯æ˜¯å¦åŸºäº
-         * å­—ç¬¦ï¼Œå¦åˆ™è¡¨ç¤ºåŸºäºå­—èŠ‚ï¼›å±æ€§customè¡¨ç¤ºè‡ªå®šä¹‰çš„éªŒè¯å¤„ç†ï¼Œè¿™é‡Œå¡«å…¥çš„æ˜¯éªŒè¯å‡½æ•°çš„æ–‡ä»¶åï¼Œåœ¨è°ƒç”¨å‡½æ•°æ—¶ï¼Œç¬¬ä¸€ä¸ªå‚
-         * æ•°æ˜¯éœ€è¦éªŒè¯çš„å€¼ï¼Œç¬¬äºŒä¸ªå‚æ•°æ˜¯æ•°æ®çš„åç§°ï¼›å±æ€§messageè¡¨ç¤ºéªŒè¯å¤±è´¥æ—¶éœ€è¦æ˜¾ç¤ºçš„é”™è¯¯ä¿¡æ¯ã€‚ä¾‹å¦‚ï¼š
-         * <input name="email" pattern="[A-Za-z][\w.]*@[A-Za-z][\w.]*" maxLen="64" trim="yes" validate="é‚®ç®±åœ°å€" />
-         * <input name="year" minValue="1990" maxValue="2020" message="è¯·å¡«å…¥1990-2020ä¹‹é—´çš„å¹´ä»½" />
-         * å¦‚æœæœªè®¾ç½®invalidå±æ€§, éªŒè¯å¤±è´¥æ—¶æç¤ºä¿¡æ¯åœ¨è¾“å…¥æ¡†ä¸­ç”Ÿæˆ, å¦‚æœè®¾ç½®äº†invalidå±æ€§, åˆ™ä¼šåœ¨æŒ‡å®šçš„Elementä¸­æ˜¾ç¤ºå‡ºé”™
-         * ä¿¡æ¯, æˆ–è€…æ˜¯è°ƒç”¨æŒ‡å®šçš„å‡½æ•°å¤„ç†å‡ºé”™ä¿¡æ¯.
+         * ÑéÖ¤±íµ¥ÔªËØµÄ¸ñÊ½, ÊôĞÔvalidate±íÊ¾µ±Ç°Êı¾İµÄÃû³Æ£»ÊôĞÔtrim="yes"Ê±»á¹ıÂËÊı¾İÁ½¶ËµÄ¿Õ°××Ö·û£»ÊôĞÔpattern±íÊ¾
+         * ĞèÒªÑéÖ¤µÄÕıÔò±í´ïÊ½£¬»á×Ô¶¯ÔÚµ±Ç°ÕıÔò±í´ïÊ½Ç°ºóÌí¼Ó^Óë$±íÊ¾ĞĞÊ×ĞĞÎ²×ªÒå£»ÊôĞÔmaxValue,minValue±íÊ¾Êı¾İÔÊĞíµÄ
+         * ×î´ó¡¢×îĞ¡ÊıÖµ£»ÊôĞÔmaxLen, minLen±íÊ¾Êı¾İÔÊĞíµÄ×î´ó¡¢×îĞ¡³¤¶È£¬´ËÊ±£¬ÓĞÒ»¸öÊôĞÔcharacter±íÊ¾³¤¶ÈÑéÖ¤ÊÇ·ñ»ùÓÚ
+         * ×Ö·û£¬·ñÔò±íÊ¾»ùÓÚ×Ö½Ú£»ÊôĞÔcustom±íÊ¾×Ô¶¨ÒåµÄÑéÖ¤´¦Àí£¬ÕâÀïÌîÈëµÄÊÇÑéÖ¤º¯ÊıµÄÎÄ¼şÃû£¬ÔÚµ÷ÓÃº¯ÊıÊ±£¬µÚÒ»¸ö²Î
+         * ÊıÊÇĞèÒªÑéÖ¤µÄÖµ£¬µÚ¶ş¸ö²ÎÊıÊÇÊı¾İµÄÃû³Æ£»ÊôĞÔmessage±íÊ¾ÑéÖ¤Ê§°ÜÊ±ĞèÒªÏÔÊ¾µÄ´íÎóĞÅÏ¢¡£ÀıÈç£º
+         * <input name="email" pattern="[A-Za-z][\w.]*@[A-Za-z][\w.]*" maxLen="64" trim="yes" validate="ÓÊÏäµØÖ·" />
+         * <input name="year" minValue="1990" maxValue="2020" message="ÇëÌîÈë1990-2020Ö®¼äµÄÄê·İ" />
+         * Èç¹ûÎ´ÉèÖÃinvalidÊôĞÔ, ÑéÖ¤Ê§°ÜÊ±ÌáÊ¾ĞÅÏ¢ÔÚÊäÈë¿òÖĞÉú³É, Èç¹ûÉèÖÃÁËinvalidÊôĞÔ, Ôò»áÔÚÖ¸¶¨µÄElementÖĞÏÔÊ¾³ö´í
+         * ĞÅÏ¢, »òÕßÊÇµ÷ÓÃÖ¸¶¨µÄº¯Êı´¦Àí³ö´íĞÅÏ¢.
          * @public
          *
-         * @param {Element} e è¡¨å•å…ƒç´ 
-         * @return {Boolean} æ˜¯/å¦ä¸ºå…è®¸çš„æ ¼å¼
+         * @param {Element} e ±íµ¥ÔªËØ
+         * @return {Boolean} ÊÇ/·ñÎªÔÊĞíµÄ¸ñÊ½
          */
         function Validate(e)
         {
@@ -198,7 +198,7 @@ function deepCopy(o) {
                         o = baidu.G(invalid);
                         if (o)
                         {
-                            /* å¦‚æœæœ‰åŒåçš„Element, åˆ™è®¾ç½®Elementçš„innerHTMLå€¼ */
+                            /* Èç¹ûÓĞÍ¬ÃûµÄElement, ÔòÉèÖÃElementµÄinnerHTMLÖµ */
                             e._eMsg = o;
                             e.onInvalid = function (msg) {
                                 this._eMsg.innerHTML = msg;
@@ -209,7 +209,7 @@ function deepCopy(o) {
                         }
                         else
                         {
-                            /* å¦‚æœæ²¡æœ‰åŒåçš„Element, è°ƒç”¨å‡½æ•°å¤„ç† */
+                            /* Èç¹ûÃ»ÓĞÍ¬ÃûµÄElement, µ÷ÓÃº¯Êı´¦Àí */
                             e.onInvalid = window[invalid];
                             e.onValid = e.onInvalid.valid;
                         }
@@ -221,7 +221,7 @@ function deepCopy(o) {
                             this.onfocus = function () {
                                 baidu.removeClass(this,'invalid');
                                 var v = this._sValue;
-                                /* æ¢å¤åŸæ¥çš„å€¼ */
+                                /* »Ö¸´Ô­À´µÄÖµ */
                                 if (v !== undefined)
                                 {
                                     this.value = v;
@@ -242,23 +242,23 @@ function deepCopy(o) {
             return true;
         }
 
-        Validate.ERR_SUBMIT = "æ•°æ®æ— æ³•å‘æœåŠ¡å™¨æäº¤";
-        Validate.AFFIRM_REMOVE = "çœŸçš„è¦åˆ é™¤å®ƒå—ï¼Ÿ";
-        Validate.ERR_REQUIRED = "#{0}ä¸èƒ½ä¸ºç©º";
-        Validate.ERR_LEAST_LETTER = "#{0}è‡³å°‘éœ€è¦åŒ…å«#{1}å­—èŠ‚";
-        Validate.ERR_MOST_LETTER = "#{0}æœ€å¤šåªèƒ½åŒ…å«#{1}å­—èŠ‚";
-        Validate.ERR_LEAST_CHAR = "#{0}è‡³å°‘éœ€è¦åŒ…å«#{1}å­—ç¬¦";
-        Validate.ERR_MOST_CHAR = "#{0}æœ€å¤šåªèƒ½åŒ…å«#{1}å­—ç¬¦";
-        Validate.ERR_MINIMUL = "#{0}å¿…é¡»å¤§äº#{1}";
-        Validate.ERR_MAXIMUL = "#{0}å¿…é¡»å°äº#{1}";
-        Validate.ERR_INVAILD = "#{0}æ— æ•ˆ";
+        Validate.ERR_SUBMIT = "Êı¾İÎŞ·¨Ïò·şÎñÆ÷Ìá½»";
+        Validate.AFFIRM_REMOVE = "ÕæµÄÒªÉ¾³ıËüÂğ£¿";
+        Validate.ERR_REQUIRED = "#{0}²»ÄÜÎª¿Õ";
+        Validate.ERR_LEAST_LETTER = "#{0}ÖÁÉÙĞèÒª°üº¬#{1}×Ö½Ú";
+        Validate.ERR_MOST_LETTER = "#{0}×î¶àÖ»ÄÜ°üº¬#{1}×Ö½Ú";
+        Validate.ERR_LEAST_CHAR = "#{0}ÖÁÉÙĞèÒª°üº¬#{1}×Ö·û";
+        Validate.ERR_MOST_CHAR = "#{0}×î¶àÖ»ÄÜ°üº¬#{1}×Ö·û";
+        Validate.ERR_MINIMUL = "#{0}±ØĞë´óÓÚ#{1}";
+        Validate.ERR_MAXIMUL = "#{0}±ØĞëĞ¡ÓÚ#{1}";
+        Validate.ERR_INVAILD = "#{0}ÎŞĞ§";
 
         /**
-         * éªŒè¯æ•´ä¸ªåŒºåŸŸå†…çš„å…ƒç´ 
+         * ÑéÖ¤Õû¸öÇøÓòÄÚµÄÔªËØ
          * @public
          *
-         * @param {Element} el Elementå…ƒç´ 
-         * @return {Boolean} æ˜¯/å¦éªŒè¯é€šè¿‡
+         * @param {Element} el ElementÔªËØ
+         * @return {Boolean} ÊÇ/·ñÑéÖ¤Í¨¹ı
          */
         Validate.validElement = function (el) {
             var list = el.getElementsByTagName('*');
@@ -274,11 +274,11 @@ function deepCopy(o) {
         };
 
         /**
-         * éªŒè¯æ•´ä¸ªè¡¨å•
+         * ÑéÖ¤Õû¸ö±íµ¥
          * @public
          *
-         * @param {FormElement} form è¡¨å•å…ƒç´ 
-         * @return {Boolean} æ˜¯/å¦éªŒè¯é€šè¿‡
+         * @param {FormElement} form ±íµ¥ÔªËØ
+         * @return {Boolean} ÊÇ/·ñÑéÖ¤Í¨¹ı
          */
         Validate.validForm = function (form) {
             var list = form;
@@ -294,13 +294,13 @@ function deepCopy(o) {
         };
 
         /**
-         * å¯¹æ•°æ®è¿›è¡Œæ­£åˆ™è¡¨è¾¾å¼éªŒè¯
+         * ¶ÔÊı¾İ½øĞĞÕıÔò±í´ïÊ½ÑéÖ¤
          * @public
          *
-         * @param {String} value è¦éªŒè¯çš„å­—ç¬¦ä¸²
-         * @param {String} name å­—ç¬¦ä¸²åç§°
-         * @param {String} regexp æ­£åˆ™è¡¨è¾¾å¼å­—ç¬¦ä¸²
-         * @return {String} å¦‚æœæœ‰å€¼è¿”å›çš„æ˜¯å‡ºé”™æç¤ºä¿¡æ¯
+         * @param {String} value ÒªÑéÖ¤µÄ×Ö·û´®
+         * @param {String} name ×Ö·û´®Ãû³Æ
+         * @param {String} regexp ÕıÔò±í´ïÊ½×Ö·û´®
+         * @return {String} Èç¹ûÓĞÖµ·µ»ØµÄÊÇ³ö´íÌáÊ¾ĞÅÏ¢
          */
         Validate._pattern = function (value, name, regexp) {
             if (regexp && !value.match(new RegExp('^' + regexp + '$')))
@@ -310,14 +310,14 @@ function deepCopy(o) {
         };
 
         /**
-         * å¯¹æ•°æ®è¿›è¡Œæ•°å€¼è¡¨è¾¾å¼éªŒè¯
+         * ¶ÔÊı¾İ½øĞĞÊıÖµ±í´ïÊ½ÑéÖ¤
          * @public
          *
-         * @param {String} value è¦éªŒè¯çš„å­—ç¬¦ä¸²
-         * @param {String} name å­—ç¬¦ä¸²åç§°
-         * @param {String} max å…è®¸çš„æœ€å¤§æ•°å€¼, å¦‚æœä¸ºç©ºè¡¨ç¤ºæ²¡æœ‰æœ€å¤§å€¼é™åˆ¶
-         * @param {String} min å…è®¸çš„æœ€å°æ•°å€¼, å¦‚æœä¸ºç©ºè¡¨ç¤ºæ²¡æœ‰æœ€å°å€¼é™åˆ¶
-         * @return {String} å¦‚æœæœ‰å€¼è¿”å›çš„æ˜¯å‡ºé”™æç¤ºä¿¡æ¯
+         * @param {String} value ÒªÑéÖ¤µÄ×Ö·û´®
+         * @param {String} name ×Ö·û´®Ãû³Æ
+         * @param {String} max ÔÊĞíµÄ×î´óÊıÖµ, Èç¹ûÎª¿Õ±íÊ¾Ã»ÓĞ×î´óÖµÏŞÖÆ
+         * @param {String} min ÔÊĞíµÄ×îĞ¡ÊıÖµ, Èç¹ûÎª¿Õ±íÊ¾Ã»ÓĞ×îĞ¡ÖµÏŞÖÆ
+         * @return {String} Èç¹ûÓĞÖµ·µ»ØµÄÊÇ³ö´íÌáÊ¾ĞÅÏ¢
          */
         Validate._number = function (value, name, max, min) {
             if (max || min)
@@ -342,14 +342,14 @@ function deepCopy(o) {
         };
 
         /**
-         * å¯¹æ•°æ®è¿›è¡Œé•¿åº¦éªŒè¯
+         * ¶ÔÊı¾İ½øĞĞ³¤¶ÈÑéÖ¤
          * @public
          *
-         * @param {String} value è¦éªŒè¯çš„å­—ç¬¦ä¸²
-         * @param {String} name å­—ç¬¦ä¸²åç§°
-         * @param {String} max å…è®¸çš„æœ€å¤§é•¿åº¦, å¦‚æœä¸ºç©ºè¡¨ç¤ºæ²¡æœ‰æœ€å¤§é•¿åº¦é™åˆ¶
-         * @param {String} min å…è®¸çš„æœ€å°é•¿åº¦, å¦‚æœä¸ºç©ºè¡¨ç¤ºæ²¡æœ‰æœ€å°é•¿åº¦é™åˆ¶
-         * @return {String} å¦‚æœæœ‰å€¼è¿”å›çš„æ˜¯å‡ºé”™æç¤ºä¿¡æ¯
+         * @param {String} value ÒªÑéÖ¤µÄ×Ö·û´®
+         * @param {String} name ×Ö·û´®Ãû³Æ
+         * @param {String} max ÔÊĞíµÄ×î´ó³¤¶È, Èç¹ûÎª¿Õ±íÊ¾Ã»ÓĞ×î´ó³¤¶ÈÏŞÖÆ
+         * @param {String} min ÔÊĞíµÄ×îĞ¡³¤¶È, Èç¹ûÎª¿Õ±íÊ¾Ã»ÓĞ×îĞ¡³¤¶ÈÏŞÖÆ
+         * @return {String} Èç¹ûÓĞÖµ·µ»ØµÄÊÇ³ö´íÌáÊ¾ĞÅÏ¢
          */
         Validate._length = function (value, name, max, min, character) {
             if (max || min)
@@ -367,13 +367,13 @@ function deepCopy(o) {
         };
 
         /**
-         * è‡ªå®šä¹‰éªŒè¯è°ƒç”¨
+         * ×Ô¶¨ÒåÑéÖ¤µ÷ÓÃ
          * @public
          *
-         * @param {String} value è¦éªŒè¯çš„å­—ç¬¦ä¸²
-         * @param {String} name å­—ç¬¦ä¸²åç§°
-         * @param {String} func è‡ªå®šä¹‰éªŒè¯å‡½æ•°å
-         * @return {String} å¦‚æœæœ‰å€¼è¿”å›çš„æ˜¯å‡ºé”™æç¤ºä¿¡æ¯
+         * @param {String} value ÒªÑéÖ¤µÄ×Ö·û´®
+         * @param {String} name ×Ö·û´®Ãû³Æ
+         * @param {String} func ×Ô¶¨ÒåÑéÖ¤º¯ÊıÃû
+         * @return {String} Èç¹ûÓĞÖµ·µ»ØµÄÊÇ³ö´íÌáÊ¾ĞÅÏ¢
          */
         Validate._custom = function (value, name, func) {
             if (func) {
@@ -687,7 +687,7 @@ function deepCopy(o) {
     p.addAction = function(obj, addExisted, isCopy) {
         obj = deepCopy(obj);
         if (isCopy) {
-            obj.name += '-å‰¯æœ¬';
+            obj.name += '-¸±±¾';
         }
         var oldId = obj.id;
         obj.id = this.generateId();
@@ -774,6 +774,8 @@ function deepCopy(o) {
         obj.remark = "";
         obj.validator = "";
         obj.dataType = "";
+    	obj.dataLength = "";
+		obj.needed = "ÊÇ";
         obj.parameterList = [];
         return obj;
     }
@@ -1264,60 +1266,60 @@ function deepCopy(o) {
         _draftData,                     // when not defined, will be switched to edit mode with draft data
         URL      = null,                // url object, contains all url required
         MESSAGE = {
-            "CONFIRM_COVER"                     : "æ˜¯å¦ç¡®å®šè¦†ç›–æ—§çš„å†…å®¹?",
-            "CONFIRM_SAVE"                      : "æ˜¯å¦ç¡®è®¤ä¿å­˜?",
-            "CONFIRM_CANCEL"                    : "æ˜¯å¦ç¡®å®šå–æ¶ˆ?",
-            "CONFIRM_CHECKIN"                   : "æ˜¯å¦ç¡®å®šæäº¤?",
-            "CONFIRM_CHECKOUT"                  : "æ˜¯å¦ç¡®å®šè·å–?",
-            "CHECK_LOCK_CONFLICKTION"           : "æ­£åœ¨ä¸ºæ‚¨æ£€æŸ¥å·¥ä½œåŒºé”å®šçŠ¶æ€...",
-            "CHECK_LOCK_CONFLICKTION_COMPLETED" : "æ‚¨å·²æˆåŠŸåˆ‡æ¢è‡³ç¼–è¾‘çŠ¶æ€ï¼Œè¯¥é¡¹ç›®å·²è¢«æ‚¨é”å®šã€‚",
-            "CHOOSE_AT_FIRST"                   : "è¯·å…ˆé€‰æ‹©æ‚¨è¦æ“ä½œçš„é€‰é¡¹.",
-            "SAVE_LIST_MAX_LENGTH_OVERFLOW"     : "æ‚¨çš„å­˜æ¡£ç©ºé—´å·²æ»¡ï¼Œè¯·åˆ é™¤ä¸å¿…è¦çš„å­˜æ¡£ï¼Œæˆ–è¦†ç›–æ—§çš„å­˜æ¡£ã€‚",
-            "CONFIRM_DELETE"                    : "æ‚¨æ˜¯å¦ç¡®è®¤åˆ é™¤?",
-            "LOADING"                           : "åŠ è½½ä¸­...",
-            "LOAD"                              : "å·²å®ŒæˆåŠ è½½",
-            "MODULE_LOADING"                    : "æ­£åœ¨åŠ è½½é¡¹ç›®æ¨¡å—...",
-            "MODULE_LOAD"                       : "é¡¹ç›®æ¨¡å—åŠ è½½å®Œæˆ",
-            "VERSION_LOADING"                   : "æ­£åœ¨è¯·æ±‚ç‰ˆæœ¬ä¿¡æ¯...",
-            "VERSION_LOAD"                      : "ç‰ˆæœ¬ä¿¡æ¯å·²åŠ è½½",
-            "VERSION_EXIT"                      : "å·²é€€å‡ºç‰ˆæœ¬è§‚çœ‹æ¨¡å¼",
-            "VERSION_SWITCHING"                 : "æ­£åœ¨ä¸ºæ‚¨åˆ‡æ¢ç‰ˆæœ¬...",
-            "VERSION_SWITCHED"                  : "ç‰ˆæœ¬åˆ‡æ¢æˆåŠŸ",
-            "VERSION_SWITCH_ERROR"              : "ç‰ˆæœ¬åˆ‡æ¢ä¸­å‘ç”Ÿé”™è¯¯ï¼Œå·²æ¢å¤è‡³åˆ‡æ¢å‰",
-            "SAVING"                            : "æ­£åœ¨ä¿å­˜...",
-            "SAVED"                             : "ä¿å­˜æˆåŠŸ",
-            "DELETING"                          : "æ­£åœ¨åˆ é™¤...",
-            "DELETED"                           : "åˆ é™¤æˆåŠŸ",
-            "PROCESSING"                        : "æ­£åœ¨å¤„ç†ä¸­,è¯·ç¨å...",
-            "PROCESSED"                         : "å¤„ç†æˆåŠŸ",
-            "ERROR"                             : "å‡ºç°é”™è¯¯ï¼Œè¯·ç¨åé‡è¯•ã€‚",
-            "DO_NOT_DOUBLE_CLICK"               : "æ‚¨çš„è¯·æ±‚æ­£åœ¨å¤„ç†ï¼Œè¯·å‹¿é‡å¤ç‚¹å‡»ã€‚",
-            "FATAL_ERROR"                       : "å‘ç”Ÿä¸¥é‡é”™è¯¯ï¼Œè¯·è”ç³»ç»´æŠ¤äººå‘˜å¹¶ä¿ç•™ç°åœºã€‚",
-            "SESSION_DELAY_ERROR"               : "Sessionå»¶æ—¶å‘ç”Ÿå¼‚å¸¸ï¼Œå»ºè®®æ‚¨ç«‹å³ä¿å­˜å·¥ä½œåŒºå¹¶è”ç³»ç»´æŠ¤äººå‘˜."
+            "CONFIRM_COVER"                     : "ÊÇ·ñÈ·¶¨¸²¸Ç¾ÉµÄÄÚÈİ?",
+            "CONFIRM_SAVE"                      : "ÊÇ·ñÈ·ÈÏ±£´æ?",
+            "CONFIRM_CANCEL"                    : "ÊÇ·ñÈ·¶¨È¡Ïû?",
+            "CONFIRM_CHECKIN"                   : "ÊÇ·ñÈ·¶¨Ìá½»?",
+            "CONFIRM_CHECKOUT"                  : "ÊÇ·ñÈ·¶¨»ñÈ¡?",
+            "CHECK_LOCK_CONFLICKTION"           : "ÕıÔÚÎªÄú¼ì²é¹¤×÷ÇøËø¶¨×´Ì¬...",
+            "CHECK_LOCK_CONFLICKTION_COMPLETED" : "ÄúÒÑ³É¹¦ÇĞ»»ÖÁ±à¼­×´Ì¬£¬¸ÃÏîÄ¿ÒÑ±»ÄúËø¶¨¡£",
+            "CHOOSE_AT_FIRST"                   : "ÇëÏÈÑ¡ÔñÄúÒª²Ù×÷µÄÑ¡Ïî.",
+            "SAVE_LIST_MAX_LENGTH_OVERFLOW"     : "ÄúµÄ´æµµ¿Õ¼äÒÑÂú£¬ÇëÉ¾³ı²»±ØÒªµÄ´æµµ£¬»ò¸²¸Ç¾ÉµÄ´æµµ¡£",
+            "CONFIRM_DELETE"                    : "ÄúÊÇ·ñÈ·ÈÏÉ¾³ı?",
+            "LOADING"                           : "¼ÓÔØÖĞ...",
+            "LOAD"                              : "ÒÑÍê³É¼ÓÔØ",
+            "MODULE_LOADING"                    : "ÕıÔÚ¼ÓÔØÏîÄ¿Ä£¿é...",
+            "MODULE_LOAD"                       : "ÏîÄ¿Ä£¿é¼ÓÔØÍê³É",
+            "VERSION_LOADING"                   : "ÕıÔÚÇëÇó°æ±¾ĞÅÏ¢...",
+            "VERSION_LOAD"                      : "°æ±¾ĞÅÏ¢ÒÑ¼ÓÔØ",
+            "VERSION_EXIT"                      : "ÒÑÍË³ö°æ±¾¹Û¿´Ä£Ê½",
+            "VERSION_SWITCHING"                 : "ÕıÔÚÎªÄúÇĞ»»°æ±¾...",
+            "VERSION_SWITCHED"                  : "°æ±¾ÇĞ»»³É¹¦",
+            "VERSION_SWITCH_ERROR"              : "°æ±¾ÇĞ»»ÖĞ·¢Éú´íÎó£¬ÒÑ»Ö¸´ÖÁÇĞ»»Ç°",
+            "SAVING"                            : "ÕıÔÚ±£´æ...",
+            "SAVED"                             : "±£´æ³É¹¦",
+            "DELETING"                          : "ÕıÔÚÉ¾³ı...",
+            "DELETED"                           : "É¾³ı³É¹¦",
+            "PROCESSING"                        : "ÕıÔÚ´¦ÀíÖĞ,ÇëÉÔºó...",
+            "PROCESSED"                         : "´¦Àí³É¹¦",
+            "ERROR"                             : "³öÏÖ´íÎó£¬ÇëÉÔºóÖØÊÔ¡£",
+            "DO_NOT_DOUBLE_CLICK"               : "ÄúµÄÇëÇóÕıÔÚ´¦Àí£¬ÇëÎğÖØ¸´µã»÷¡£",
+            "FATAL_ERROR"                       : "·¢ÉúÑÏÖØ´íÎó£¬ÇëÁªÏµÎ¬»¤ÈËÔ±²¢±£ÁôÏÖ³¡¡£",
+            "SESSION_DELAY_ERROR"               : "SessionÑÓÊ±·¢ÉúÒì³££¬½¨ÒéÄúÁ¢¼´±£´æ¹¤×÷Çø²¢ÁªÏµÎ¬»¤ÈËÔ±."
         },
         TEMPLATE = {            // static template
 
-            "REQUEST_BEGIN"                 : "<h2>è¯·æ±‚å‚æ•°åˆ—è¡¨</h2><table class=\"table-a\"><tr class=\"head\"><td class=\"head-expander\"></td><td class=\"head-identifier\">å˜é‡å</td><td class=\"head-name\">å«ä¹‰</td><td class=\"head-type\">ç±»å‹</td><td class=\"head-remark\">å¤‡æ³¨</td></tr>",
-            "REQUEST_BEGIN_EDIT"            : "<h2>è¯·æ±‚å‚æ•°åˆ—è¡¨</h2><table class=\"table-a\"><tr class=\"head\"><td class=\"head-expander\"></td><td class=\"head-op\">OP</td><td class=\"head-identifier\">å˜é‡å</td><td class=\"head-name\">å«ä¹‰</td><td class=\"head-type\">ç±»å‹</td><td class=\"head-remark\">å¤‡æ³¨</td></tr>",
+            "REQUEST_BEGIN"                 : "<h2>ÇëÇó²ÎÊıÁĞ±í</h2><table class=\"table-a\"><tr class=\"head\"><td class=\"head-expander\"></td><td class=\"head-identifier\">±äÁ¿Ãû</td><td class=\"head-name\">º¬Òå</td><td class=\"head-type\">ÀàĞÍ</td><td class=\"head-length\">³¤¶È</td><td class=\"head-needed\">±ØĞèĞÔ</td><td class=\"head-remark\">±¸×¢</td></tr>",
+            "REQUEST_BEGIN_EDIT"            : "<h2>ÇëÇó²ÎÊıÁĞ±í</h2><table class=\"table-a\"><tr class=\"head\"><td class=\"head-expander\"></td><td class=\"head-op\">OP</td><td class=\"head-identifier\">±äÁ¿Ãû</td><td class=\"head-name\">º¬Òå</td><td class=\"head-type\">ÀàĞÍ</td><td class=\"head-length\">³¤¶È</td><td class=\"head-needed\">±ØĞèĞÔ</td><td class=\"head-remark\">±¸×¢</td></tr>",
             "REQUEST_END"                   : "</table>",
-            "REQUEST_PARAMETER_ADD_BUTTON"  : "<div class='btns-container'><a href=\"#\" class=\"btn btn-info btn-xs\" onclick=\"ws.addParam('request'); return false;\"><i class='glyphicon glyphicon-plus'></i>æ·»åŠ å‚æ•°</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href\"#\" class='btn btn-default btn-xs' onclick=\"ws.importJSON(true); return false;\"><i class='glyphicon glyphicon-transfer'></i>å¯¼å…¥JSON</a></div>",
+            "REQUEST_PARAMETER_ADD_BUTTON"  : "<div class='btns-container'><a href=\"#\" class=\"btn btn-info btn-xs\" onclick=\"ws.addParam('request'); return false;\"><i class='glyphicon glyphicon-plus'></i>Ìí¼Ó²ÎÊı</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href\"#\" class='btn btn-default btn-xs' onclick=\"ws.importJSON(true); return false;\"><i class='glyphicon glyphicon-transfer'></i>µ¼ÈëJSON</a></div>",
 
-            "RESPONSE_BEGIN"                : "<h2>å“åº”å‚æ•°åˆ—è¡¨</h2><table class=\"table-a\"><tr class=\"head\"><td class=\"head-expander\"></td><td class=\"head-identifier\">å˜é‡å</td><td class=\"head-name\">å«ä¹‰</td><td class=\"head-type\">ç±»å‹</td><td class=\"head-remark\">å¤‡æ³¨</td></tr>",
-            "RESPONSE_BEGIN_EDIT"           : "<h2>å“åº”å‚æ•°åˆ—è¡¨</h2><table class=\"table-a\"><tr class=\"head\"><td class=\"head-expander\"></td><td class=\"head-op\">OP</td><td class=\"head-identifier\">å˜é‡å</td><td class=\"head-name\">å«ä¹‰</td><td class=\"head-type\">ç±»å‹</td><td class=\"head-remark\">å¤‡æ³¨</td></tr>",
+            "RESPONSE_BEGIN"                : "<h2>ÏìÓ¦²ÎÊıÁĞ±í</h2><table class=\"table-a\"><tr class=\"head\"><td class=\"head-expander\"></td><td class=\"head-identifier\">±äÁ¿Ãû</td><td class=\"head-name\">º¬Òå</td><td class=\"head-type\">ÀàĞÍ</td><td class=\"head-length\">³¤¶È</td><td class=\"head-needed\">±ØĞèĞÔ</td><td class=\"head-remark\">±¸×¢</td></tr>",
+            "RESPONSE_BEGIN_EDIT"           : "<h2>ÏìÓ¦²ÎÊıÁĞ±í</h2><table class=\"table-a\"><tr class=\"head\"><td class=\"head-expander\"></td><td class=\"head-op\">OP</td><td class=\"head-identifier\">±äÁ¿Ãû</td><td class=\"head-name\">º¬Òå</td><td class=\"head-type\">ÀàĞÍ</td><td class=\"head-length\">³¤¶È</td><td class=\"head-needed\">±ØĞèĞÔ</td><td class=\"head-remark\">±¸×¢</td></tr>",
             "RESPONSE_END"                  : "</table>",
-            "RESPONSE_PARAMETER_ADD_BUTTON" : "<div class='btns-container'><a href=\"#\" class=\"btn btn-info btn-xs\" onclick=\"ws.addParam('response'); return false;\"><i class='glyphicon glyphicon-plus'></i>æ·»åŠ å‚æ•°</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href\"#\" class='btn btn-default btn-xs' onclick=\"ws.importJSON(); return false;\"><i class='glyphicon glyphicon-transfer'></i>å¯¼å…¥JSON</a></div>",
+            "RESPONSE_PARAMETER_ADD_BUTTON" : "<div class='btns-container'><a href=\"#\" class=\"btn btn-info btn-xs\" onclick=\"ws.addParam('response'); return false;\"><i class='glyphicon glyphicon-plus'></i>Ìí¼Ó²ÎÊı</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href\"#\" class='btn btn-default btn-xs' onclick=\"ws.importJSON(); return false;\"><i class='glyphicon glyphicon-transfer'></i>µ¼ÈëJSON</a></div>",
 
             "SAVE_PANEL_BEGIN"              : "<div id=\"div-save-panel\">",
             "SAVE_PANEL_END"                : "</div>",
 
-            "VERSION_PANEL_BEGIN"           : "<div id=\"div-version-panel\"><table class='table-version'><tr class='head'><td class='version-op'>OP</td><td class='version'>ç‰ˆæœ¬</td><td class='operator'>æ“ä½œäºº</td><td class='operation-time'>æ“ä½œæ—¶é—´</td><td class='version-desc'>æè¿°</td></tr>",
+            "VERSION_PANEL_BEGIN"           : "<div id=\"div-version-panel\"><table class='table-version'><tr class='head'><td class='version-op'>OP</td><td class='version'>°æ±¾</td><td class='operator'>²Ù×÷ÈË</td><td class='operation-time'>²Ù×÷Ê±¼ä</td><td class='version-desc'>ÃèÊö</td></tr>",
             "VERSION_PANEL_END"             : "</table></div>",
 
             "MODULE_ADD_BUTTON"             : "<div id=\"div-add-m\"><a href=\"#\" style=\"margin:0 10px;\" onclick=\"ws.addM(); return false;\"><i class='glyphicon glyphicon-plus' style='color:#5bc0de'></i></a></div>",
 
             "SEPERATOR"                     : "<div class=\"seperator\"></div>" ,
 
-            "NO_DATA_CHECKED"               : "<div class='log-item'><font color='gray'>æ²¡æœ‰å¯è·å–æˆ–æ›´æ–°çš„æ•°æ®</font></div>"
+            "NO_DATA_CHECKED"               : "<div class='log-item'><font color='gray'>Ã»ÓĞ¿É»ñÈ¡»ò¸üĞÂµÄÊı¾İ</font></div>"
         },
         CONFIG = {
             "SAVE_LIST_MAX_LENGTH"       : 10,
@@ -1405,7 +1407,7 @@ function deepCopy(o) {
                 if (draftData) {
                     var draftDataDate = new Date();
                     draftDataDate.setTime(+localStorage.getItem('_dataDate'));
-                    if (confirm('æ£€æµ‹åˆ°æ‚¨æœ‰ã€æœªä¿å­˜ã€‘çš„è‰ç¨¿ï¼Œæ—¶é—´åœ¨' + draftDataDate.toString() + ', æ˜¯å¦æ¢å¤?')) {
+                    if (confirm('¼ì²âµ½ÄúÓĞ¡¾Î´±£´æ¡¿µÄ²İ¸å£¬Ê±¼äÔÚ' + draftDataDate.toString() + ', ÊÇ·ñ»Ö¸´?')) {
                         _draftData = draftData;
                     }
                 }
@@ -1443,7 +1445,7 @@ function deepCopy(o) {
                         // backup for administrators
                         localStorage.setItem('_data' + (new Date).getTime(), b.json.stringify(_data));
                     }
-                    return "ç°åœ¨é€€å‡ºæ‰€æœ‰ä¿®æ”¹éƒ½å°†ä¸¢å¤±ï¼Œç¡®è®¤é€€å‡ºï¼Ÿ";
+                    return "ÏÖÔÚÍË³öËùÓĞĞŞ¸Ä¶¼½«¶ªÊ§£¬È·ÈÏÍË³ö£¿";
                 } else {
                     if (_isLocalStorageEnabled) {
                         localStorage.removeItem('_data');
@@ -1869,7 +1871,7 @@ function deepCopy(o) {
      */
     ws.version = function() {
         if (!processing()) return;
-        e.get(ELEMENT_ID.VERSION_PANEL).setTitle("ç‰ˆæœ¬ç®¡ç†");
+        e.get(ELEMENT_ID.VERSION_PANEL).setTitle("°æ±¾¹ÜÀí");
         ecFloater.show(ELEMENT_ID.VERSION_PANEL);
         setSelectedValue("radioCheckIn", -1);
         var panelDiv = b.g("div-version-panel");
@@ -1985,6 +1987,16 @@ function deepCopy(o) {
         }
     };
 
+	/**
+     * needed select changed
+     */
+    ws.neededSelectChanged = function(parameterId, value) {
+        p.setParameter(parameterId, value, "needed");
+        if (value == "object" || value == "array<object>") {
+            this.switchA(_curActionId);
+        }
+    };
+    
     /**
      * radio version changed
      */
@@ -2019,7 +2031,7 @@ function deepCopy(o) {
             case "mt":
                 el = getDiv(editContext.id, editContext.key);
                 if (newValue === '') {
-                    newValue = 'æœªå‘½å';
+                    newValue = 'Î´ÃüÃû';
                 }
                 p.setModuleName(editContext.id, newValue);
                 updateCurMTree();
@@ -2083,7 +2095,7 @@ function deepCopy(o) {
         var txt = ele.value;
         try {
             if (typeof JSON === 'undefined') {
-                alert('æ‚¨ç”¨çš„å•¥æµè§ˆå™¨å•Šï¼Ÿè¿JSONè½¬æ¢éƒ½ä¸æ”¯æŒä¹Ÿ...è¯·ä½¿ç”¨IE9+/Chrome/FFè¯•è¯•çœ‹ï¼Ÿ');
+                alert('ÄúÓÃµÄÉ¶ä¯ÀÀÆ÷°¡£¿Á¬JSON×ª»»¶¼²»Ö§³ÖÒ²...ÇëÊ¹ÓÃIE9+/Chrome/FFÊÔÊÔ¿´£¿');
                 return;
             }
             var data = eval("(" + txt + ")");
@@ -2097,7 +2109,7 @@ function deepCopy(o) {
             this.switchA(_curActionId);
             this.cancelImportJSON();
          } catch (e) {
-            showMessage(CONST.ERROR, ELEMENT_ID.IMPORT_JSON_MESSAGE, 'JSONè§£æé”™è¯¯: ' + e.message);
+            showMessage(CONST.ERROR, ELEMENT_ID.IMPORT_JSON_MESSAGE, 'JSON½âÎö´íÎó: ' + e.message);
          }
      };
 
@@ -2159,7 +2171,7 @@ function deepCopy(o) {
         b.g("editAFloater-requestUrl").value = action.requestUrl;
         b.g("editAFloater-responseTemplate").value = action.responseTemplate;
         b.g("editAFloater-description").value = desc;
-        e.get("editAFloater").setTitle("æ¨¡å‹ç®¡ç† - ç¼–è¾‘è¯·æ±‚");
+        e.get("editAFloater").setTitle("Ä£ĞÍ¹ÜÀí - ±à¼­ÇëÇó");
         ecFloater.show("editAFloater");
     };
 
@@ -2173,7 +2185,7 @@ function deepCopy(o) {
         b.g("editPFloater-id").value = page.id;
         b.g("editPFloater-name").value = page.name;
         b.g("editPFloater-introduction").value = page.introduction;
-        e.get("editAFloater").setTitle("æ¨¡å‹ç®¡ç† - ç¼–è¾‘é¡µé¢");
+        e.get("editAFloater").setTitle("Ä£ĞÍ¹ÜÀí - ±à¼­Ò³Ãæ");
         ecFloater.show("editPFloater");
     };
 
@@ -2183,7 +2195,7 @@ function deepCopy(o) {
     ws.addA = function(pageId) {
         initEditAFloater();
         b.g("editAFloater-pageId").value = pageId;
-        e.get("editAFloater").setTitle("æ¨¡å‹ç®¡ç† - æ·»åŠ æ–°è¯·æ±‚");
+        e.get("editAFloater").setTitle("Ä£ĞÍ¹ÜÀí - Ìí¼ÓĞÂÇëÇó");
         ecFloater.show("editAFloater");
     };
 
@@ -2192,7 +2204,7 @@ function deepCopy(o) {
      */
     ws.addP = function() {
         initEditPFloater();
-        e.get("editPFloater").setTitle("æ¨¡å‹ç®¡ç† - æ·»åŠ æ–°é¡µé¢");
+        e.get("editPFloater").setTitle("Ä£ĞÍ¹ÜÀí - Ìí¼ÓĞÂÒ³Ãæ");
         ecFloater.show("editPFloater");
     };
 
@@ -2322,13 +2334,13 @@ function deepCopy(o) {
             var data = eval('(' + backupData + ')');
             data = eval('(' + data.modelJSON + ')');
             if (!data || !data.moduleList) {
-                throw new Error("æ‰¾ä¸åˆ°moduleListå±æ€§ï¼Œé”™è¯¯çš„å¤‡ä»½æ–‡æœ¬ã€‚ä½ åœ¨é€—æˆ‘ï¼Ÿ");
+                throw new Error("ÕÒ²»µ½moduleListÊôĞÔ£¬´íÎóµÄ±¸·İÎÄ±¾¡£ÄãÔÚ¶ºÎÒ£¿");
             }
             p.getData().moduleList = data.moduleList;
             ecui.get('recoverWorkspaceFloater').hide();
-            ws.quickSave('é€šè¿‡å¤‡ä»½å¯¼å…¥ï¼Œæ¢å¤äº†æ•°æ®');
+            ws.quickSave('Í¨¹ı±¸·İµ¼Èë£¬»Ö¸´ÁËÊı¾İ');
         } catch (ex) {
-            showMessage(CONST.ERROR, ELEMENT_ID.RECOVER_WORKSPACE_MESSAGE, 'å¯¼å…¥å¤±è´¥ï¼Œè¾“å…¥æœ‰è¯¯ã€‚æŠ€æœ¯é”™è¯¯ä¿¡æ¯ï¼š' + ex.message);
+            showMessage(CONST.ERROR, ELEMENT_ID.RECOVER_WORKSPACE_MESSAGE, 'µ¼ÈëÊ§°Ü£¬ÊäÈëÓĞÎó¡£¼¼Êõ´íÎóĞÅÏ¢£º' + ex.message);
         }
      };
 
@@ -2357,7 +2369,7 @@ function deepCopy(o) {
                 if (obj.isOk) {
                     storeViewState();
                     if (obj.projectData.moduleList.length === 0) {
-                        obj.projectData.moduleList = [{"id":ws.generateId(),"name":"æŸæ¨¡å—ï¼ˆç‚¹å‡»ç¼–è¾‘ååŒå‡»ä¿®æ”¹ï¼‰","introduction":"","pageList":[{"moduleId":ws.generateId(),"name":"æŸé¡µé¢","introduction":"","id":ws.generateId(),"isIdGenerated":true,"actionList":[{"pageId":ws.generateId(),"name":"æŸè¯·æ±‚","requestType":"1","requestUrl":"","responseTemplate":"","description":"","id":ws.generateId(),"requestParameterList":[{"id":ws.generateId(),"identifier":"reqParam","name":"æŸè¯·æ±‚å‚æ•°","remark":"","validator":"","dataType":"number","parameterList":[]}],"responseParameterList":[{"id":ws.generateId(),"identifier":"resParam","name":"æŸå“åº”å‚æ•°","remark":"","validator":"","dataType":"number","parameterList":[]}]}]}]}];
+                        obj.projectData.moduleList = [{"id":ws.generateId(),"name":"Ä³Ä£¿é£¨µã»÷±à¼­ºóË«»÷ĞŞ¸Ä£©","introduction":"","pageList":[{"moduleId":ws.generateId(),"name":"Ä³Ò³Ãæ","introduction":"","id":ws.generateId(),"isIdGenerated":true,"actionList":[{"pageId":ws.generateId(),"name":"Ä³ÇëÇó","requestType":"1","requestUrl":"","responseTemplate":"","description":"","id":ws.generateId(),"requestParameterList":[{"id":ws.generateId(),"identifier":"reqParam","name":"Ä³ÇëÇó²ÎÊı","remark":"","validator":"","dataType":"number","parameterList":[]}],"responseParameterList":[{"id":ws.generateId(),"identifier":"resParam","name":"Ä³ÏìÓ¦²ÎÊı","remark":"","validator":"","dataType":"number","parameterList":[]}]}]}]}];
                     }
                     if (_draftData) {
                         obj = JSON.parse(_draftData);
@@ -2524,7 +2536,7 @@ function deepCopy(o) {
      * switch version
      */
     ws.switchVersion = function() {
-    if (!confirm('ç¡®å®šè¦æ¢å¤åˆ°å¦ä¸€ç‰ˆæœ¬å—ï¼Ÿ')) return;
+    if (!confirm('È·¶¨Òª»Ö¸´µ½ÁíÒ»°æ±¾Âğ£¿')) return;
         var versionId = getSelectedValue("radioCheckIn");
         if (!versionId) {
             showMessage(CONST.WARN, ELEMENT_ID.VERSION_PANEL_MESSAGE, MESSAGE.CHOOSE_AT_FIRST);
@@ -2610,7 +2622,7 @@ function deepCopy(o) {
             //}
         }
         if (empty) {
-            $('#actionOpFloater-page').append($("<option/>").attr("value", "").text('æœ¨æœ‰å¯ç§»åŠ¨çš„é¡µé¢'));
+            $('#actionOpFloater-page').append($("<option/>").attr("value", "").text('Ä¾ÓĞ¿ÉÒÆ¶¯µÄÒ³Ãæ'));
         }
     };
 
@@ -2626,7 +2638,7 @@ function deepCopy(o) {
             if (targetMID && targetPID) {
                 actionOperate(targetMID, targetPID, opType);
             } else {
-                alert('è¯·é€‰æ‹©ç›®æ ‡ä½ç½®å“¦~');
+                alert('ÇëÑ¡ÔñÄ¿±êÎ»ÖÃÅ¶~');
                 return;
             }
         }
@@ -2674,7 +2686,7 @@ function deepCopy(o) {
 
 
         var ruleUrl, dataUrl;
-        var ERROR_MSG = 'éœ€å…ˆå¡«å†™è¯·æ±‚é“¾æ¥';
+        var ERROR_MSG = 'ĞèÏÈÌîĞ´ÇëÇóÁ´½Ó';
 
         if ($.trim(action.requestUrl) == '') {
           ruleUrl = ERROR_MSG;
@@ -3461,7 +3473,7 @@ function deepCopy(o) {
         //b.g("txtTag").value = "";
         b.g("txtDescription").value = "";
         b.g("divVersion").innerHTML = p.getVersion() + " -> " + versionUpgrade(p.getVersion(), 4);
-        e.get("saveVSSFloater").setTitle("æäº¤æ‚¨çš„ä¿®æ”¹");
+        e.get("saveVSSFloater").setTitle("Ìá½»ÄúµÄĞŞ¸Ä");
         ecFloater.show("saveVSSFloater");
         initRadioList("radioVersion");
         setSelectedValue("radioVersion", 4);
@@ -3934,7 +3946,7 @@ function deepCopy(o) {
                     str += "</div>";
                 }
                 if (_isEditMode) {
-                    str += "<div style='margin-top:10px'><a class=\"btn btn-info btn-xs\" href=\"#\" onclick=\"ws.addA(" + page.id + "); return false;\"><i class=\"glyphicon glyphicon-plus\" style='margin-right: 5px;'></i>æ·»åŠ æ¥å£</a></div>";
+                    str += "<div style='margin-top:10px'><a class=\"btn btn-info btn-xs\" href=\"#\" onclick=\"ws.addA(" + page.id + "); return false;\"><i class=\"glyphicon glyphicon-plus\" style='margin-right: 5px;'></i>Ìí¼Ó½Ó¿Ú</a></div>";
                 }
                 str += "</div>";
             }
@@ -4007,7 +4019,7 @@ function deepCopy(o) {
             str += getAInfoHtml(a);
 
             if (_isEditMode) {
-                str += "<div class=\"action-info\"><a href\"#\" class='btn btn-default btn-xs' onclick=\"ws.moveAndCopy(); return false;\"><i class='glyphicon glyphicon-random'></i>ç§»åŠ¨/å¤åˆ¶æ¥å£</a></div>";
+                str += "<div class=\"action-info\"><a href\"#\" class='btn btn-default btn-xs' onclick=\"ws.moveAndCopy(); return false;\"><i class='glyphicon glyphicon-random'></i>ÒÆ¶¯/¸´ÖÆ½Ó¿Ú</a></div>";
             }
 
             str += _isEditMode ? TEMPLATE.REQUEST_BEGIN_EDIT : TEMPLATE.REQUEST_BEGIN;
@@ -4039,27 +4051,27 @@ function deepCopy(o) {
          * get action info html
          */
         function getAInfoHtml(a) {
-            var head = "<h2 style='margin-top:20px;'>æ¥å£è¯¦æƒ… <span style='font-size: 14px; color: #999;'>(id: " + a.id 
+            var head = "<h2 style='margin-top:20px;'>½Ó¿ÚÏêÇé <span style='font-size: 14px; color: #999;'>(id: " + a.id 
                 + ") &nbsp;&nbsp;&nbsp;&nbsp;<button class=\"btn btn-danger btn-xs\" onclick=\"ws.showMockData(" 
-                + a.id + ");\">Mockæ•°æ®</button></span> </h2><div class='action-info' href='#' onclick='ws.editA(" 
+                + a.id + ");\">MockÊı¾İ</button></span> </h2><div class='action-info' href='#' onclick='ws.editA(" 
                 + a.id + "); return false;'>",
                 body = "",
                 foot = "</div>";
 
             if (a.name) {
-                body += "<div class='item'><b>æ¥å£åç§° </b>" + a.name + "</div>";
+                body += "<div class='item'><b>½Ó¿ÚÃû³Æ </b>" + a.name + "</div>";
             }
             if (a.requestType) {
-                body += "<div class='item'><b>è¯·æ±‚ç±»å‹ </b><font color='orange'>" + getRequestTypeStr(a.requestType) + "</font></div>";
+                body += "<div class='item'><b>ÇëÇóÀàĞÍ </b><font color='orange'>" + getRequestTypeStr(a.requestType) + "</font></div>";
             }
             if (a.requestUrl) {
-                body += "<div class='item'><b>è¯·æ±‚Url </b><font color='blue'> " + a.requestUrl + "</font></div>";
+                body += "<div class='item'><b>ÇëÇóUrl </b><font color='blue'> " + a.requestUrl + "</font></div>";
             }
             if (a.responseTemplate) {
-                body += "<div class='item'><b>ç›¸å…³æ¨¡æ¿ </b><font color='red'>" + a.responseTemplate + "</font></div>";
+                body += "<div class='item'><b>Ïà¹ØÄ£°å </b><font color='red'>" + a.responseTemplate + "</font></div>";
             }
             if (a.description) {
-                body += "<div class='item'><b>æ¥å£æè¿° </b>" + processTextarea(a.description) + "</div>";
+                body += "<div class='item'><b>½Ó¿ÚÃèÊö </b>" + processTextarea(a.description) + "</div>";
             }
 
 
@@ -4089,7 +4101,7 @@ function deepCopy(o) {
             var t1 = hasCode ? txt.replace(/(@code|@end)/gmi, '') : txt;
             var reg = /@code([\s\S]*?)@end/gm;
 
-            arr[i++] = '<a class="div-a-desc-expander" href="#" onclick="this.innerHTML = this.innerHTML == \'å±•å¼€\' ? \'æ”¶ç¼©\' : \'å±•å¼€\';baidu.each(baidu.dom.query(\'.description-area\'), function(ele){baidu.dom.toggle(ele);});baidu.each(baidu.dom.query(\'.description-area-partial\'), function(ele){baidu.dom.toggle(ele)}); return false;">å±•å¼€</a>';
+            arr[i++] = '<a class="div-a-desc-expander" href="#" onclick="this.innerHTML = this.innerHTML == \'Õ¹¿ª\' ? \'ÊÕËõ\' : \'Õ¹¿ª\';baidu.each(baidu.dom.query(\'.description-area\'), function(ele){baidu.dom.toggle(ele);});baidu.each(baidu.dom.query(\'.description-area-partial\'), function(ele){baidu.dom.toggle(ele)}); return false;">Õ¹¿ª</a>';
             arr[i++] = '<div class="description-area-partial">';
             arr[i++] = t1.substring(0, 100);
             arr[i++] = '...</div>';
@@ -4159,6 +4171,9 @@ function deepCopy(o) {
             str += getPTDHtml(param.id, util.escaper.escapeInH(param.identifier), "identifier", level);
             str += getPTDHtml(param.id, util.escaper.escapeInH(param.name), "name");
             str += getDataTypeEditSelectHtml(param.id, param.dataType);
+            str += getPTDHtml(param.id, util.escaper.escapeInH(param.dataLength), "dataLength", level);
+			str += getNeededEditSelectHtml(param.id, param.needed);
+            
             // for remarkFilter, escape after filter processed...
             str += getPTDHtml(param.id, param.remark, "remark");
             str += "</tr>";
@@ -4196,7 +4211,7 @@ function deepCopy(o) {
                 return r;
             }
             if (!r) return '';
-            // æ„Ÿè°¢@é€¸æ‰ æä¾›æ­£åˆ™è¡¨è¾¾å¼
+            // ¸ĞĞ»@Òİ²Å Ìá¹©ÕıÔò±í´ïÊ½
             if (~r.indexOf('@mock')) {
                 return r.substring(0, r.indexOf('@mock'));
             }
@@ -4317,6 +4332,34 @@ function deepCopy(o) {
         }
 
         /**
+         * get parameter needed edit select html
+         */
+        function getNeededEditSelectHtml(id, needed) {
+            var str = "",
+                neededList = [
+                        'ÊÇ',
+                        '·ñ',
+                        '¿ÉÑ¡'
+                    ],
+                neededListNum = neededList.length;
+
+            str += "<td id='td-param-needed-"+ id +"' class='td-param needed'>";
+            if (_isEditMode) {
+                str += "<select id='select-needed-"+ id + "' class='select-needed' on" + CONFIG.KEYPRESS_EVENT_NAME + "='ws.neededKeyPressed(event, " +
+                    id + ");' onchange='ws.neededSelectChanged(" + id + ", this.value);'>";
+                for (var i = 0; i < neededListNum; i++) {
+                    var item = neededList[i];
+                    str += "<option value='"+ item +"'" + (item == needed ? " selected='true'" : "") + ">" + util.escaper.escapeInH(item) + "</option>";
+                }
+                str += "</select>";
+            } else {
+                str += util.escaper.escapeInH(needed);
+            }
+            str += "</td>";
+            return str;
+        }
+        
+        /**
          * get save panel html
          */
         function getSavePanelHtml(saveList) {
@@ -4362,8 +4405,8 @@ function deepCopy(o) {
             var str = "",
                 isNew = (save === null);
             str += "<div class='item'><input name='radio-save' type='radio' value='' group='save-panel' " +
-                (isNew ? "" : "id='" + PREFIX.SAVE + save.id + "'") + "/>" + (isNew ? "æ–°å¢å­˜æ¡£" : "å­˜æ¡£:" +
-                save.id + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;æ›´æ–°æ—¶é—´: " + save.updateDate) + "</div>";
+                (isNew ? "" : "id='" + PREFIX.SAVE + save.id + "'") + "/>" + (isNew ? "ĞÂÔö´æµµ" : "´æµµ:" +
+                save.id + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;¸üĞÂÊ±¼ä: " + save.updateDate) + "</div>";
             return str;
         }
 

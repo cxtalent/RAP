@@ -256,7 +256,7 @@ body {
 }
 
 .div-a .head-name {
-    width: 180px
+    width: 120px
 }
 
 .div-a .head-validator {
@@ -264,7 +264,15 @@ body {
 }
 
 .div-a .head-type {
-    width: 110px;
+    width: 100px;
+}
+
+.div-a .head-length {
+    width: 100px;
+}
+
+.div-a .head-needed {
+    width: 80px;
 }
 
 .div-a .head-remark {
@@ -272,7 +280,7 @@ body {
 }
 
 .div-a .head-identifier {
-    width: 180px;
+    width: 120px;
 }
 
 .div-a .head-expander {
@@ -596,6 +604,15 @@ body {
     background-color: #E6E6E6;
     border: none;
     width: 100px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.select-needed {
+    background-color: #E6E6E6;
+    border: none;
+    width: 65px;
     margin: 0;
     padding: 0;
     text-align: center;

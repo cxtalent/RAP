@@ -232,6 +232,8 @@ public class Action implements java.io.Serializable {
                 .append("<th class=\"th-name\">Name</th>")
                 .append("<th class=\"th-identifier\">Identifier</th>")
                 .append("<th class=\"th-type\">Type</th>")
+                .append("<th class=\"th-length\">Length</th>")
+                .append("<th class=\"th-needed\">Needed</th>")
                 .append("<th class=\"th-remark\">Remark</th>")
                 .append("</thead>");
         getParameterListHTMLSub(html, list, (short) 1);
@@ -246,6 +248,8 @@ public class Action implements java.io.Serializable {
                     .append("<td class=\"td-name\">" + levelMark(level) + StringUtils.escapeInH(p.getName()) + "</td>")
                     .append("<td class=\"td-identifier\">" + StringUtils.escapeInH(p.getIdentifier()) + "</td>")
                     .append("<td class=\"td-type\">" + StringUtils.escapeInH(p.getDataType()) + "</td>")
+                    .append("<td class=\"td-length\">" + StringUtils.escapeInH(p.getDataLength()) + "</td>")
+                    .append("<td class=\"td-needed\">" + StringUtils.escapeInH(p.getNeeded()) + "</td>")
                     .append("<td class=\"td-remark\">" + StringUtils.escapeInH(p.getRemark()) + "</td>")
                     .append("</tr>");
             if (p.getParameterList() != null || p.getParameterList().size() > 0) {

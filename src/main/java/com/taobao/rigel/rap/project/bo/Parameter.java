@@ -13,6 +13,8 @@ public class Parameter implements java.io.Serializable {
     private String identifierChange;
     private String remarkChange;
     private String dataType;
+    private String dataLength;
+    private String needed;
     private String remark;
     private Set<Action> actionRequestList = new HashSet<Action>();
     private Set<Action> actionResponseList = new HashSet<Action>();
@@ -125,7 +127,29 @@ public class Parameter implements java.io.Serializable {
         this.dataType = (dataType == null ? "" : dataType);
     }
 
-    public String getRemark() {
+	public String getDataLength() {
+		if (this.dataLength == null || this.dataLength.trim().isEmpty()) {
+			return "";
+		}
+		return dataLength;
+	}
+
+	public void setDataLength(String dataLength) {
+		this.dataLength = (dataLength == null ? "" : dataLength);
+	}
+
+	public String getNeeded() {
+		if (this.needed == null || this.needed.trim().isEmpty()) {
+			return "";
+		}
+		return needed;
+	}
+
+	public void setNeeded(String needed) {
+		this.needed = (needed == null ? "" : needed);
+	}
+
+	public String getRemark() {
         if (remarkChange != null) {
             return remarkChange;
         }
@@ -168,13 +192,15 @@ public class Parameter implements java.io.Serializable {
         this.parameterList = parameterList;
     }
 
-    public void update(Parameter parameter) {
-        setDataType(parameter.getDataType());
-        setIdentifier(parameter.getIdentifier());
-        setName(parameter.getName());
-        setRemark(parameter.getRemark());
-        setValidator(parameter.getValidator());
-    }
+	public void update(Parameter parameter) {
+		setIdentifier(parameter.getIdentifier());
+		setName(parameter.getName());
+		setDataType(parameter.getDataType());
+		setDataLength(parameter.getDataLength());
+		setNeeded(parameter.getNeeded());
+		setRemark(parameter.getRemark());
+		setValidator(parameter.getValidator());
+	}
 
     public List<Parameter> getParameterListOrdered() {
         Set<Parameter> parameterList = getParameterList();
@@ -219,7 +245,11 @@ public class Parameter implements java.io.Serializable {
         stringBuilder.append("\"validator\":\""
                 + StringUtils.escapeInJ(getValidator()) + "\",");
         stringBuilder.append("\"dataType\":\""
-                + StringUtils.escapeInJ(getDataType()) + "\"}");
+                + StringUtils.escapeInJ(getDataType()) + "\",");
+        stringBuilder.append("\"dataLength\":\""
+                + StringUtils.escapeInJ(getDataLength()) + "\",");
+        stringBuilder.append("\"needed\":\"" 
+                + StringUtils.escapeInJ(getNeeded()) + "\"}");
         return stringBuilder.toString();
     }
 
